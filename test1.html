@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div>
+    <br/>1
+    <br/>2
+    <br/>
+    <br/>2
+    <br/>
+    <br/>
+    <br/>2
+    <br/>
+    <br/>
+    <br/>
+    <br/>2
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>2
+    <br/>
+    <br/>
+    <br/>
+    <br/>2
+    <br/>
+    <br/>
+    <br/>2
+    <br/>
+    <br/>2
+    <br/>
+    <br/>2
+    <br/>
+    <br/>
+    <br/>2
+    <br/>
+    <br/>
+    <br/>2
+    <br/>
+    <br/>
+    <br/>2
+    <br/>
+    <br/>
+    <br/>2
+    <br/>
+    <br/>
+    <br/>2
+    <br/>
+    <br/>
+    <br/>2
+    <br/>
+    <br/>
+    <br/>2
+</div>
+<div id="div1">
+    <input id="btn1" type="button" value="回到顶部" style="position: fixed;right: 0;bottom: 0" />
+</div>
+<!-- number,string,boolean,object,function,undefined -->
+<script>
+window.onload = function(){
+    //window.onresize = function(){
+    //    alert(123);
+    //}
+    //console.log('1+9'.length)
+    var oBtn = document.getElementById('btn1');
+    var bSys = true;
+    var timer = null;
+
+    window.onscroll = function(){
+      if(!bSys){
+          clearInterval(timer);
+      }
+       bSys =false;
+    };
+
+    oBtn.onclick = function(){
+        timer = setInterval(function(){
+
+           var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+
+            var iSpeed = Math.floor(-scrollTop);
+            //var iSpeed = Math.floor(-scrollTop/8);
+
+            if(scrollTop == 0){
+                clearInterval(timer);
+            }
+
+            bSys = true;
+            document.documentElement.scrollTop = scrollTop+iSpeed;
+            document.body.scrollTop = scrollTop+iSpeed;
+        },30);
+    };
+}
+</script>
+</body>
+</html>

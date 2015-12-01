@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>avalon测试</title>
+
+    <style>
+        .a{
+            width:100px;
+            height: 100px;
+            border:1px solid red;
+        }
+        .b :last-child{
+            background: blue;
+        }
+    </style>
+    <script src="../js/avalon/avalon.js"></script>
+</head>
+<body>
+
+<div class="b">
+<div class="a">1</div>
+<div class="a">2</div>
+<div class="a">3</div>
+<div class="a">4</div>
+</div>
+
+<fieldset ms-controller="simple">
+    <legend>例子</legend>
+    <p>First name: <input type="text" ms-duplex="firstName"/></p>
+    <p>Last name: <input type="text" ms-duplex="lastName"/></p>
+    <p>Hello, <input type="text" ms-duplex="fullName"/></p>
+    <div>{{firstName + "|" + lastName}}</div>
+    <p>nick name: <input type="text" ms-duplex="nick.name"/></p>
+    <p>{{nick.name}}</p>
+</fieldset>
+
+<div ms-controller="test">
+    <p>First name: <input ms-duplex="firstName" /></p>
+    <p>Last name: <input ms-duplex="lastName"  /></p>
+    <p>Hello,    <input ms-duplex="fullName"></p>
+    <div>{{firstName +" | "+ lastName }}</div>
+
+</div>
+
+<script>
+    var first = 0;
+    var model = avalon.define("test", function(vm) {
+        vm.firstName = "司徒"
+        vm.lastName = "正美"
+        vm.fullName = {//一个包含set或get的对象会被当成PropertyDescriptor，
+            set: function(val) {//里面必须用this指向scope，不能使用scope
+                var array = (val || "").split(" ");
+                this.firstName = array[0] || "";
+                this.lastName = array[1] || "";
+            },
+            get: function() {
+                return this.firstName + " " + this.lastName;
+            }
+        }
+        vm.arr = ["aaa", 'bbb', "ccc", "ddd"]
+        vm.selected = ["bbb", "ccc"]
+        vm.checkAllbool = false
+        vm.checkAll = function() {
+            if (!first) {
+                first++
+                return
+            }
+            if (this.checked) {
+                vm.selected = vm.arr
+            } else {
+                vm.selected.clear()
+            }
+        }
+        vm.checkOne = function() {
+            var bool = this.checked
+            if (!bool) {
+                vm.checkAllbool = false
+            } else {
+                vm.checkAllbool = vm.selected.size() === vm.arr.length
+            }
+        }
+    })
+
+</script>
+
+<script>
+
+
+        avalon.define("simple",function(vm){
+            vm.firstName = "司徒";
+            vm.lastName = "正美";
+            vm.fullName = {
+                set:function(val){
+                    var array = (val || "").split(" ");
+                    this.firstName = array[0] || "";
+                    this.lastName = array[1] || "";
+                },
+                get:function(){
+                    return this.firstName + " " + this.lastName;
+                }
+            },
+                    vm.nick = {
+                        name: "暗黑之民"
+                    }
+        })
+
+
+</script>
+</body>
+</html>

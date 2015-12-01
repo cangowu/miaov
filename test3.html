@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<div>
+    <h2>剩余时间为：</h2>
+    <div id="timer">
+
+    </div>
+</div>
+
+
+<div>
+    <input type="file"/>
+    
+    <input id="btn3" type="button" value="button3"/>
+    <input id="btn1" type="button" value="button1" onclick="remove1()"/>
+    <input id="btn2" type="button" value="button2"/>
+    <input id="btn31" type="button" value="button3"/>
+    <input id="btn311" type="button" value="button3"/>
+</div>
+
+<script>
+    window.onload = function(){
+        var a = {n:1};
+        var b = a;
+        a.x = a = {n:2};
+        console.log(a.x);
+        console.log(b.x);
+    }
+    /*window.onload = function(){
+        var F = function(){};
+        Object.prototype.a = function(){ alert("object"); };
+        Function.prototype.b = function(){ alert("function"); };
+        var f = new F();
+
+        //f.a();
+        //f.constructor.b();
+        console.log(f.constructor);
+
+    }*/
+    /*window.onload = function(){
+        console.log(getQuery());
+    }
+
+    var getQuery = function(){
+        var url  = "www.baidu.com?key0=0&key1=1&key2=2";
+
+        var params = {};
+
+        var arr = url.split("?");
+
+        if(arr.length<=1){
+            return params;
+        }
+        arr = arr[1].split("&");
+        for(var i=0;i< arr.length ;i++){
+            var a = arr[i].split("=");
+            params[a[0]] = a[1];
+        }
+
+        return params;
+    }*/
+
+    /*document.body.onclick = function(){
+        var obj = document.elementFromPoint(event.clientX,event.clientY);
+
+        alert(obj.tagName);
+    }*/
+    /*function remove1(){
+        var oBtn1 = document.getElementById("btn1");
+        var oBtnNext = oBtn1.nextElementSibling;
+
+        oBtnNext.parentNode.insertAfter(oBtnNext,oBtn1);
+        //insertAfter123(oBtnNext,oBtn1);
+    }
+    function insertAfter123(oldNode,newNode){
+        if(!oldNode.nextSibling){
+            oldNode.parentNode.appendChild(newNode);
+            return;
+        }
+        oldNode.parentNode.insertBefore(newNode,oldNode.nextSibling);
+    }*/
+
+    /*var arr = [1,1,2,3,3,2,1];
+
+    Array.prototype.unique = function(){
+        var ret = [];
+        var o = {};
+        var len = this.length;
+        for(var i=0;i<len;i++){
+            var v=this[i];
+            if(!o[v]){
+                o[v] = true;
+                ret.push(v);
+            }
+        }
+        return ret;
+    }
+
+
+    Array.prototype.uniquer = function(){
+        var ret = [];
+        var o={};
+        for(var i=0;i<this.length;i++){
+            var v=this[i];
+            if(!o[v]){
+                o[v] = true;
+                ret.push(this[i]);
+            }
+        }
+        return o;
+    }
+
+    console.log(arr.uniquer());*/
+
+    /*var str = "hello world";
+    var str2 = new String("hello world");
+
+    function IsString(str) {
+        return (typeof str == "string" || str.constructor == String)
+    }
+
+    var str = "";
+
+    console.log(IsString(1));
+    console.log(IsString(str));
+    console.log(IsString(new String(str)));*/
+
+    /*window.onload = function(){
+        timer();
+    }
+
+    function timer(){
+        var ts =( new Date(2018,11,11,9,0,0) - new Date());
+
+        var dd = parseInt(ts/1000/60/60/24,10);
+        var hh = parseInt(ts/1000/60/60%24,10);
+        var mm = parseInt(ts/1000/60%60,10);
+        var ss = parseInt(ts/1000%60,10);
+        dd = checkTime(dd);
+        hh = checkTime(hh);
+        mm = checkTime(mm);
+        ss = checkTime(ss);
+        document.getElementById("timer").innerHTML = dd+"天"+hh+"小时"+mm+"分钟"+ss+"秒";
+
+        var a  = setInterval("timer()",10);
+    }
+    function checkTime(i){
+        if(i<10){
+            i="0"+i;
+        }
+        return i;
+    }*/
+</script>
+</body>
+</html>
