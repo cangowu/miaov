@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+</head>
+<body>
+
+
+<script>
+    function mySort() {
+        var args = new Array();
+        var temp;
+        args = arguments;
+        var len = args.length;
+        for(var i = 0;i < len;i++){
+            for(var j = 0;j < len - i;j++){
+                if(args[j]>args[j+1]){
+                    temp = args[j];
+                    args[j] = args[j+1];
+                    args[j+1] = temp;
+                }
+            }
+        }
+        return args;
+    }
+
+    var result = mySort(23,44,56,98,1,2,33);
+    console.log(result);
+</script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>横向导航条</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div class="header">
+
+</div>
+
+<div class="nav">
+        <div id="navi">
+            <ul>
+                <li class="select"><a href="index.aspx">主页</a></li>
+                <li class="fg"></li>
+                <li class=""><a href="infoPro.aspx?nt=82">SPA护理</a>
+                    <ul>
+
+                        <li><a href="infoPro.aspx?n=650&amp;nt=82">
+                            头皮排毒轻盈基础型
+                        </a></li>
+
+                        <li><a href="infoPro.aspx?n=804&amp;nt=82">
+                            头皮抗衰活力调理型
+                        </a></li>
+
+                        <li><a href="infoPro.aspx?n=805&amp;nt=82">
+                            头皮抗衰深层滋养型
+                        </a></li>
+
+                        <li><a href="infoPro.aspx?n=806&amp;nt=82">
+                            头部健发养护完美型
+                        </a></li>
+
+                        <li><a href="infoPro.aspx?n=807&amp;nt=82">
+                            指甲花草本护理卓越系列
+                        </a></li>
+
+                    </ul>
+                </li>
+                <li class="fg"></li>
+                <li class=""><a href="infoPro.aspx?nt=115">家居护理造型</a>
+                    <ul>
+
+                        <li><a href="infoPro.aspx?n=803&amp;nt=115">
+                            休闲旅行组合
+                        </a></li>
+
+                        <li><a href="infoPro.aspx?n=810&amp;nt=115">
+                            紫梦幻定色调理
+                        </a></li>
+
+                        <li><a href="infoPro.aspx?n=799&amp;nt=115">
+                            AH丰发组合
+                        </a></li>
+
+                        <li><a href="infoPro.aspx?n=798&amp;nt=115">
+                            Maria nilaKT系列
+                        </a></li>
+
+                        <li><a href="infoPro.aspx?n=797&amp;nt=115">
+                            MN护理造型系列
+                        </a></li>
+
+                    </ul>
+                </li>
+                <li class="fg"></li>
+                <li class=""><a href="products.aspx">明星产品</a>
+                    <ul>
+
+                    </ul>
+                </li>
+                <li class="fg"></li>
+                <li class=""><a href="info.aspx?nt=66">品牌故事</a>
+                    <ul>
+
+                        <li><a href="info.aspx?n=766&amp;nt=66">
+                            品牌故事
+                        </a></li>
+
+                    </ul>
+                </li>
+                <li class="fg"></li>
+                <li class=""><a href="info.aspx?nt=75">品牌理念</a>
+                    <ul>
+
+                        <li><a href="info.aspx?n=702&amp;nt=75">
+                            品牌理念
+                        </a></li>
+
+                    </ul>
+                </li>
+                <li class="fg"></li>
+                <li class=""><a href="http://www.linkaguoji.com/" target="_blank">品牌运营商</a>
+
+                </li>
+            </ul>
+            <span class="icon"><a href="javascript:;" class="login"></a></span><span class="icon">
+                <a href="javascript:;" class="search"></a></span>
+        </div>
+</div>
+
+<div class="main"></div>
+
+<div class="footer"></div>
+
+<script src="../js/jquery/jquery.min.js"></script>
+<script>
+    $("#header_border").animate({ width: "100%" }, {
+        easing: 'easeInOutQuad',
+        duration: 3000,
+        complete: null
+    });
+    //$(".banner").fadeIn();
+    //$(".hproducts").fadeIn();
+    //$("#footer").fadeIn();
+    $(function () {
+
+        $("#navi ul li").hover(function () {
+            $(this).find("ul").stop(true, true).slideDown();
+        }, function () {
+            $(this).find("ul").stop(true, true).slideUp();
+        });
+
+        $("#hproduct li").hover(function () {
+            $(this).find("img").stop(true, true).animate({ "margin-top": 0, width: "120px", height: "295px" }, {
+                easing: 'easeInOutQuad',
+                duration: 500,
+                complete: null
+            });
+        }, function () {
+            $(this).find("img").stop(true, true).animate({ "margin-top": "30px", width: "90px", height: "222px" }, {
+                easing: 'easeInOutQuad',
+                duration: 500,
+                complete: null
+            });
+        });
+
+        $(function () {
+            $(document).WIT_SetTab({
+                Nav: $('#J_bannerBar>li'), Field: $('#J_bannerPic>li'), Auto: true, CurCls: 'current', CrossTime: 360, OutTime: 450, InTime: 450, AutoTime: 5000
+            });
+        })
+
+
+    })
+</script>
+</body>
+</html>

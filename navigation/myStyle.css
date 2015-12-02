@@ -13,7 +13,12 @@
 .wrapper{
     width: 1000px;
     margin: 0 auto;
-    display: table;
+    /*display: table;*/
+}
+.wrapper:after{
+    display: block;
+    clear: both;
+    content: "";
 }
 .intro-nav{
     float: left;
