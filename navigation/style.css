@@ -1,0 +1,73 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.header{*zoom:1;height:61px;line-height:1;padding-top:18px;border-bottom:solid 1px #dde1e4}
+.header:before,.header:after{display:table;content:""}
+.header:after{clear:both}
+.header .logo{float:left;display:inline-block;width:133px;height:43px;background:url(img/sprite.png)}
+.header .nav{*zoom:1;float:left;margin-left:30px}
+.header .nav:before,.header .nav:after{display:table;content:""}
+.header .nav:after{clear:both}
+.header .nav li{float:left;margin-right:20px}
+.header .nav a{display:inline-block;height:59px;width:83px;text-align:center;color:#232323;font-size:16px;line-height:66px}
+.header .nav a:hover{color:#599bf8}
+.header .nav a.selected{color:#599bf8;border-bottom:solid 3px #599bf8}
+.header .header-info{float:right;*zoom:1}
+.header .header-info:before,.header .header-info:after{display:table;content:""}
+.header .header-info:after{clear:both}
+.header .header-info div{float:left}
+.header .header-info a{color:#232323;line-height:60px}
+.header .header-info a:hover{text-decoration:underline}
+.header .service-phone{border-right:solid 1px #dde1e4;padding-right:20px;margin-right:20px}
+.header .service-phone p{font-size:12px;text-align:right;margin-bottom:5px}
+.header .service-phone em{font-size:26px;color:#599bf8}
+
+.main{background:#f0f2f6;padding:30px 0 50px}
+
+.wrapper{width:1200px;margin:0 auto;text-align:left;}
+.wrapper{*zoom:1}
+.wrapper:before,.wrapper:after{display:table;content:""}
+.wrapper:after{clear:both}
+
+.intro-nav{background:#fff;float:left;width:238px;border:solid 1px #dde1e4;line-height:50px}
+.intro-nav .chengqi-new{margin-left:5px;margin-top:-9px}
+.intro-nav div{border-top:solid 1px #dde1e4;margin-top:-1px;padding:10px 20px}
+.intro-nav .intro-nav-text{line-height:2;font-size:12px;color:#a1a1a1}
+.intro-nav .intro-nav-text a{color:#599bf8;text-decoration:underline}
+.intro-nav h3{color:#a1a1a1}
+.intro-nav h3 a{color:#a1a1a1}
+.intro-nav h3 a:hover,.intro-nav h3 a.selected{color:#599bf8}
+.intro-nav a{color:#656565}
+.intro-nav ul{list-style:square inside;color:#dde1e4}
+.intro-nav ul li:hover a,.intro-nav ul li.selected a{color:#599bf8}
+.intro-nav ul li.selected{color:#599bf8}
+
+.intro-main{width:930px;float:right}
+.intro-main .intro-banner{height:300px;text-align:center;color:#fff}
+.intro-main .intro-banner .icon{margin-top:40px}
+.intro-main .intro-banner h2{font-size:24px}
+.intro-main .intro-banner p{font-size:12px;margin-bottom:20px}
+.intro-main .intro-banner a{display:inline-block;width:110px;height:40px;line-height:40px;color:#fff;background:#599bf8}
+.intro-main .intro-banner a:hover{background:#4a7cc6}
+.intro-main .intro-sm-banner{background:url(img/banner-sm.jpg)}
+.intro-main .intro-sd-banner{background:url(img/banner-sd.jpg)}
+.intro-main .intro-gw-banner{background:url(img/banner-gw.jpg)}
+.intro-main .intro-cq-banner{background:url(img/banner-cq.jpg)}
+.intro-main .intro-detail{border:solid 1px #dde1e4;border-top:none;background:#fff;padding:50px 50px 0;color:#888}
+.intro-main .intro-detail li{margin-bottom:30px}
+.intro-main .intro-detail ol{*zoom:1;font-size:12px;position:relative;margin-right:-50px}
+.intro-main .intro-detail ol:before,.intro-main .intro-detail ol:after{display:table;content:""}
+.intro-main .intro-detail ol:after{clear:both}
+.intro-main .intro-detail ol li{float:left;margin-bottom:0;width:130px;padding-right:40px;position:relative;z-index:1}
+.intro-main .intro-detail ol .intro-process-line{border-top:solid 2px #54baff;position:absolute;padding-right:0;top:12px}
+.intro-main .intro-detail ol em{display:inline-block;width:24px;height:25px;background:url(img/sprite.png) 0 -147px;color:#fff;text-align:center;line-height:25px;margin-bottom:10px}
+.intro-main .intro-detail ol p{color:gray}
+.intro-main .intro-detail h3{color:#363636;font-size:18px;font-weight:700;margin-bottom:10px}
+.intro-main .intro-detail h4{color:#232323}
+.intro-main table{border:solid 1px #8b92a0;border-collapse:collapse}
+.intro-main table td{border:solid 1px #8b92a0;padding:2px 10px}
+
+.footer{height:100px;background:#48535e;padding-top:25px}
+.footer a{color:#8b92a0}
+.footer a:hover{text-decoration:underline}
