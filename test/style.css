@@ -34,7 +34,6 @@
     text-align: center;
     font-size: 14px;
     line-height: 44px;
-    font-family: 微软雅黑;
     text-decoration: none;
     transition: all 0.2s linear;
 }
@@ -70,7 +69,6 @@
     line-height: 35px;
     width: auto;
     text-align: left;
-    font-family: 宋体;
     font-size: 12px;
     transition: all 0.3s linear;
 }
