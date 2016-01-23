@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<span style="width: 100px;height: 100px;display: block;background-color: red;">13</span>
+
+<script>
+
+    var aQuery = function(selector,context){
+        return new aQuery.prototype.init();
+    }
+    aQuery.prototype = {
+        init:function(){
+            return this;
+        },
+        name:function(){
+            return this.age;
+        },
+        age:20
+    }
+    aQuery.prototype.init.prototype = aQuery.prototype;
+
+    var a = aQuery();
+    console.log(a.name());
+</script>
+</body>
+</html>

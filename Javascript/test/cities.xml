@@ -1,0 +1,53 @@
+﻿<?xml  version='1.0' charset='utf-8'?>
+<china>
+<province name='安徽' >
+<city>合肥市</city>
+<city>蚌埠市</city>
+<city>芜湖市</city>
+<city>淮南市</city>
+<city>马鞍山市</city>
+<city> 淮北市 </city>
+<city> 铜陵市</city>
+<city>安庆市</city>
+<city>黄山市</city>
+<city>阜阳市</city>
+<city>宿州市</city>
+<city> 滁州市</city>
+<city>六安市</city>
+<city>  宣城市  </city>
+<city>  巢湖市</city>
+<city> 池州市</city>
+<city> 亳州市</city>
+</province>
+<province name='河南省' >
+<city>郑州</city>
+<city>开封</city>
+<city>洛阳</city>
+<city>南阳</city>
+<city>漯河</city>
+<city> 许昌</city>
+<city> 三门峡</city>
+<city>平顶山</city>
+<city>周口</city>
+</province>
+<province name='湖南省' >
+<city>长沙市</city>
+<city>浏阳市</city>
+<city>株洲市</city>
+<city>湘潭市</city>
+<city>湘乡市</city>
+<city> 衡阳市</city>
+<city> 耒阳市</city>
+<city>邵阳市</city>
+<city>武冈市</city>
+</province>
+</china>
+
+
+
+
+
+
+
+
+

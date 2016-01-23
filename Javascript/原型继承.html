@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+<script>
+    //**基于对象的继承
+//    1.Object.create()是实现原型继承最简单的方法
+
+    var person = {
+        name:"cangowu",
+        sayName:function(){
+            alert(this.name);
+        }
+    };
+
+    /**创建新的对象myPerson继承自person。
+     * 这种继承方式就如同myPerson的原型设置为person，从此myPerson就可以访问person的属性和方法
+     * 而不需要同名变量在新的对象上重新定义一遍
+     * 例如：重新定义myPerson.sayName()会自动切断对person.sayName()的访问
+     * */
+//    var myPerson = Object.create(person);
+//    myPerson.sayName();//cangowu
+
+//    myPerson.sayName = function(){
+//        alert("wuzhigang");
+//    };
+//
+//    myPerson.sayName();//wuzhigang
+//    person.sayName();//cangowu
+//
+//    var myPerson1 = Object.create(person,{
+//        name:{
+//            value:"wxg"
+//        }
+//    });
+//
+//    myPerson1.sayName();//wxg
+//    person.sayName();//cangowu
+//
+//    myPerson.name = "nihao";
+//    myPerson.sayName();
+
+    //**基于类型的继承
+    /*function MyError(message){
+        this.message = message;
+    }
+
+    MyError.prototype = new Error();//Error:超类，MyError继承自Error
+
+    var error = new MyError("this is a error");
+
+    console.log(error instanceof Error);
+    console.log(error instanceof MyError);*/
+
+    //**构造器继承
+    /*function Person(name){
+        this.name = name;
+    }
+
+    function Author(name){
+//        Person.call(this,name);//只能传入数值
+        Person.apply(this,[name]);//arguments可以传入
+//        var A = Person.bind(this,name);
+//        A();
+    }
+
+    Author.prototype = new Person();
+
+    var a = new Author("zhangsanfeng");
+    alert(a.name);*/
+
+
+    //**门面模式（包装器）
+    function DOMWrapper(element){
+        this.element = element;
+    }
+
+    DOMWrapper.prototype.addClass = function(className){
+        element.className += ""+className;
+    }
+
+    DOMWrapper.prototype.remove = function(){
+        this.element.parentNode.removeChild(this.element);
+    }
+
+    var wrapper = new DOMWrapper(document.getElementById('id'));
+    wrapper.addClass('selected');
+    wrapper.remove();
+
+    //120
+</script>
+</body>
+</html>

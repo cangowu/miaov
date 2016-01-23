@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+    //1.工厂应该有厂长来决定运行到底哪条产品线
+    //2.消费者-》子类
+    var gongchang = {};
+    gongchang.chanyifu = function(){
+        this.gongren = 50;
+        alert("我们有"+this.gongren);
+    }
+    gongchang.chanxie = function(){
+        this.gongren = 100;
+        alert("产鞋子");
+    }
+    gongchang.yunshu = function(){
+        this.gongren = 10;
+        alert("运输");
+    }
+    gongchang.changzhang = function(para){
+        return new gongchang[para]();
+    }
+
+    var me = gongchang.changzhang("chanxie");
+    alert(me.gongren);
+
+</script>
+</body>
+</html>

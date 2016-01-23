@@ -1,0 +1,167 @@
+﻿<!DOCUMENT  html>
+<html>
+	<head>
+		<meta  charset='gb2312'>
+		<title> 二级联动 </title>
+	<script type="text/javascript" src="../../js/jquery/jquery.min.js"></script>
+
+	<script>
+		
+		
+		</script>
+		<style  type='text/css'>
+			
+			</style>
+		</head>
+	<body>
+		<div>
+			<table>
+				<tr><td>
+					<select  id='province'  name='province'>
+						<option  value=''>请选择省份…… </option>
+						<option  value='河南 省'>河南 省 </option>
+						<option   value='湖南省'>湖南省 </option>
+						<option  value='安徽省'>安徽省 </option>
+						</select>
+					</td>
+					<td>
+					<select  id='city'  name='city'>
+						<option  value=''>请选择城市…… </option>
+						<option   value=''> </option>
+						<option    value=''> </option>
+						
+						</select>
+					</td>
+					</tr>				
+				</table>
+			
+			</div>
+				</body>
+				<script  type='text/javascript'>
+					window.onload=function(){
+					
+					document.getElementById('province').onchange=function(){
+							
+							//测试xml是否加载成功
+							var  xmlDoc= parseXML("cities.xml");
+							//alert(xmlDoc);
+							//<province  name='安徽省'>
+                        console.log(xmlDoc);
+							var  provinceElements=xmlDoc.getElementsByTagName('province');
+                        var a = xmlDoc
+							console.log(a);
+						   //获取变化省的值
+						var  changeProvinceValue=this.value;
+					//( changeProvinceVlaue);
+						//清空城市的下拉选项
+						var   cityElement=document.getElementById('city');
+						  /*<select  id='city'  name='city'>
+						          <option  value=''>请选择城市…… </option>
+						           <option   value='合肥'>合肥 </option>
+						          <option    value='蚌埠'>蚌埠 </option>
+						               </select>
+								*/
+						  var   cityoptionElements=cityElement.getElementsByTagName('option');
+						  //从后往前删除
+					  for(var  i=cityoptionElements.length-1; i>0;i--){
+						cityElement.removeChild(cityoptionElements[i]);
+						  	
+						 }
+						//判断xml文件加载是否成功
+						var  ProvinceElement=null;
+						//定位到具体省
+						var  xmlDoc= parseXML("cities.xml");
+						//alert(xmlDoc);
+						var  xmlProvinceElements=xmlDoc.getElementsByTagName('province');
+						//alert( xmlProvinceElements.length);
+						for(i=0;i<xmlProvinceElements.length;i++){
+							var  xmlProvinceElement=xmlProvinceElements[i];
+							var  nameAttrvalue=xmlProviceElement.getAttribute('name');
+							//alert( nameAttrvalue);
+							if(changeProvincevalue=nameAttrvalue){
+								//把符合条件的province保存在外部
+								provinceElement=xmlProvinceElement;
+								                            break;
+								}
+							}
+						if(ProvinceElement!=null){
+							//获取省下所有城市节点
+							var  xmlCityElements=provinceElement.getElementsByTagName('city');
+							alert(xmlCityElements.length);
+							
+								for(i=0;i<xmlCityElements.length;i++){
+								var  cityValue=xmlCityElements[i].firstchild.nodeValue;
+								alert(cityValue);
+								//创建option标签<option></option>
+								var   optionElement=document.creatElement('option');
+								//	<option   value='合肥'></option>
+								optionElement.setAttribute('value',cityValue);
+								//合肥
+								var   cityTextElement=document.creatTextNode(cityValue);
+								//<option   value='合肥'>合肥</option>
+								optionElement.appendChild(cityTextElement);
+								/*增加
+								<select  id='city'  name='city'>
+						          <option  value=''>请选择城市…… </option>
+						           <option   value='合肥'>合肥 </option>
+						          <option    value='蚌埠'>蚌埠 </option>
+						               </select>
+								*/
+						       
+						          cityElement.appendChild(optionElement);
+							}
+							}
+						}	
+						
+						
+						
+						
+						}/**
+						加载xml文件
+						@pare{object}  filename
+						*/
+						
+					function  parseXML(filename){
+					try{ //Internet Explorer
+                      
+                                 xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+                       }
+                                catch(e)
+                      {
+                                  try  {//Firefox, Mozilla, Opera, etc.
+                     
+                                    xmlDoc=document.implementation.createDocument("","",null);
+                       }
+                                      catch(e) {
+                                      	
+                                      
+                       }
+                         }      
+                            
+                      //关闭异步加载
+                                xmlDoc.async=false;
+                        //加载文档
+                                xmlDoc.load(filename);
+                               return    xmlDoc;
+                      } ; 
+					
+					
+					
+					</script>
+</html>	
+		
+		
+		
+		
+		
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

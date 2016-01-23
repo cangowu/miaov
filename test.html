@@ -13,6 +13,7 @@
 <div class="a">
 
 </div>
+<input type="text" id="tel"/>
 
 <script>
 
@@ -32,6 +33,34 @@
     var reg = /(\w+)=(\w+)/;
     var str =  'love=hate';
             console.log(str.match(reg))
+
+
+    var a = /^(([1-9]+([0-9]+)?|[0])(\.[0-9]{1,2})?)|$/;
+    var a1 = /^([1-9]+([0-9]+)?|[0])(\.[0-9]{1,2})?$/;
+
+    var b = "";
+    console.log(a.test(b));
+
+
+    if(!(a.test(b)||a1.test(b))&&b!=""){
+        console.log(123);
+    }
+    console.log(a.test(b));
+    console.log(a1.test(b));
+    console.log(a1.test(b) && b!="")
+
+    var tel = '13688889999';
+    console.log(tel.replace(/(\d{3})(\d{4})(\d{4})/,"$1 $2 $3"))
+    console.log(tel.replace(/(?=(?:\d{4})+(?!\d))/g,"|"));
+    console.log(tel.replace(/(?=(?:\d{4})+(?!\d))/g,"|"));
+
+
+    console.log(tel.replace(/(?=(?:\d{4})+(?!\d))/g,"|"));
+
+    //console.log(tel.replace(/(\d+?)((?:\d{4})*)$/, '($1)$2'));
+
+    //text.replace(/(.at)/g,"word ($1)");
+
 </script>
 
 </body>

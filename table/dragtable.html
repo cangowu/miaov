@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+    <script type="text/javascript" src="jquery.jsmartdrag.js"></script>
+    <title>jsmartdrag实例页面</title>
+    <style>
+        body{-moz-user-select: none;color:white;font-size:1.5em;}
+        div{width:100px;height:100px;border-radius:5px;background-color:#93caf0;margin-bottom:15px;text-align:center;line-height:100px;}
+        .source{background-color:#93caf0;}
+        .target{background-color:#f0b593;}
+        .jsmartdrag-source{cursor:pointer;}
+        .jsmartdrag-source-hover{opacity:0.5;}
+        .jsmartdrag-cursor-hover{opacity:0.5;}
+        .jsmartdrag-target-hover{opacity:0.5;}
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            js = $(".source").jsmartdrag({
+                target:'.target',
+                afterDrag:afterDrag
+            });
+        });
+        function afterDrag(selected,currentObj,targetSelected){
+            if(selected){
+                alert("将元素ID为"+currentObj.attr("id")+"移动到了元素ID为"+targetSelected.attr("id")+"上");
+            }else{
+                alert("没有拖动到指定的区域里哦!");
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="target1"  class="target">target1</div>
+<div id="target2"  class="target">target2</div>
+<div id="target3"  class="target">target3</div>
+<div id="source1"  class="source" >source1</div>
+<div id="source2"  class="source" >source2</div>
+<div id="source3"  class="source" >source3</div>
+</body>
+</html>

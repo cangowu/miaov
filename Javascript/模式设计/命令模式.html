@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+<script>
+    //1.一个连有炮兵和步兵，司令可以下命令调动军队打仗
+    var lian = {};
+    lian.paobing = function(pao_num){
+        console.log(pao_num+"门炮准备战斗");
+    }
+    lian.bubing = function(bubing_num){
+        console.log(bubing_num+"人准备战斗");
+    }
+    lian.lianzhang = function(mingling){
+        lian[mingling.type](mingling.num);
+    }
+
+    //司令下命令
+    lian.lianzhang({
+       type:"paobing",
+       num:10
+    });
+    lian.lianzhang({
+        type:"bubing",
+        num:100
+    });
+</script>
+</body>
+</html>

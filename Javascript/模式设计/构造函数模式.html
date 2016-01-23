@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+<!--<script>
+    function Car(model,year,miles){
+        if(!(this instanceof Car)){
+            return new Car(model,year,miles);
+        }
+        this.model = model;
+        this.year = year;
+        this.miles = miles;
+        this.output = function(){
+            return this.model + "走了" + this.miles + "公里";
+        }
+    }
+
+    var tom = new Car("大叔",2009,20000);
+    var dudu = Car("Dudu",2010,5000);
+
+    console.log(typeof tom);
+    console.log(tom.output());
+    console.log(typeof dudu);
+    console.log(dudu.output());
+
+</script>-->
+
+<script>
+    //1.用于创建特定类型的对象
+    //2.这样的函数名会被人笑话
+    //3.js开发的时候写单引号
+    //4.js里构造函数比较特殊的地方 new
+    //5.其他的语言里 比如PHP 里人家实现 有一个关键字 A class
+    //6.zaomen就是构造函数 他又充当了类的概念
+    var AA = {
+        zaomen:function(huawen) {
+            if (!(this instanceof AA.zaomen)) {
+                console.log(123);
+                return new AA.zaomen(huawen);
+            };
+            var _huawen = "普通";
+            if (huawen) {
+                _huawen = huawen;
+            }
+            this.suo = "普通";
+            this.huawen = _huawen;
+            this.create = function () {
+                return "【锁头】" + this.suo + "【花纹】" + this.huawen;
+            }
+        }
+    };
+    var BB = {
+        zaomen:function(huawen) {
+            if (!(this instanceof BB.zaomen(huawen)) {
+                return new BB.zaomen(huawen);
+            };
+            var _huawen = "普通";
+            if (huawen) {
+                _huawen = huawen;
+            }
+            this.suo = "普通";
+            this.huawen = _huawen;
+            this.create = function () {
+                return "【锁头】" + this.suo + "【花纹】" + this.huawen;
+            }
+        }
+    };
+    /*function zaomen(huawen){
+        if(!(this instanceof zaomen)){
+            return new zaomen();
+        }
+        var _huawen = "普通";
+        if(huawen){
+            _huawen = huawen;
+        }
+        this.suo = "普通";
+        this.huawen = _huawen;
+        this.create = function(){
+            return "【锁头】" + this.suo + "【花纹】" + this.huawen;
+        }
+    }*/
+
+    var xiaozhang = AA.zaomen();
+    alert("xiaozhang" + xiaozhang.create());
+
+    var xiaoli = BB.zaomen("绚丽",'123');
+    alert("xiaoli" + xiaoli.create());
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

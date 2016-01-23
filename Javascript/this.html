@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+    /*function Point(x,y){
+        "use strict";
+        this.x = x;
+        this.y = y;
+    }
+
+    var p = new Point(7,5);
+    console.log(p);*/
+
+    function callIt(func){
+        func();
+    }
+
+    var counter = {
+        count:0,
+        inc:function(){
+            "use strict";
+            this.count++;
+        }
+    }
+
+    callIt(counter.inc.bind(counter));
+
+    //console.log(counter.inc);
+    console.log(counter.count);
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

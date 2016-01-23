@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../js/jquery/jquery.min.js"></script>
+
+    <style>
+        .kele:before{ position: absolute; content: " "; border: transparent 14px solid; border-width: 13px 8px ; border-right-color: #CCC; top: 1px; left: -16px; height: 0; width: 0; }
+        .kele{ position: relative; width: 40px; height: 28px; background: #EEE; border-radius: 5px;  margin: 30px; text-align: center; line-height: 28px; color: #999; font-size: 14px; border: 1px solid #CCC; }
+        .kele:after{ position: absolute; content: " "; border: transparent 13px solid;  border-width:  12px 8px; border-right-color: #EEE; top: 2px; left: -15px; height: 0; width: 0; }
+    </style>
+</head>
+<body>
+
+<div class="div1">
+    <div class="div2">
+        <div class="div3">
+            123
+        </div>
+    </div>
+</div>
+
+
+<div>
+    <div class="data">
+        nihao
+    </div>
+    <div>
+        123
+    </div>
+    <div>
+        234
+    </div>
+</div>
+<div>123</div>
+
+<input type="button" value="button" id="btn"/>
+<script>
+
+
+
+/*function sum(){
+    var nResult = 0;
+    for(var i= 0,l=arguments.length;i<l;i++){
+        nResult+=window.parseFloat(arguments[i])||0;
+    }
+    return nResult.toFixed(3)*1000/1000;
+}
+
+console.log(sum(0.1,0.2));
+console.log(sum(1,2));
+console.log(sum(1.0,2,false,true));
+
+console.log(window.parseFloat(true)||0);*/
+
+    /*function obj(name){
+        if(name){
+            this.name = name;
+        }
+        return this;
+    }
+    obj.prototype.name = "name22";
+    var a = obj("name11");
+    var b = new obj;
+
+    console.log(a.name);
+    console.log(b.name);*/
+
+    /*var data = {a:1,b:2,c:3,d:4};
+    var b = Object.keys(data).filter(function(x){
+        return data[x]>2;
+    })
+
+    console.log(b)*/
+
+    /*var a = new String("abc");
+    console.log(a instanceof String);
+    console.log(typeof a == 'string');*/
+
+    /*function Foo() {
+        var i = 0;
+        return function() {
+            console.log(i++);
+        }
+    }
+
+    var f1 = Foo(),
+            f2 = Foo();
+    f1();
+    f1();
+    f2();*/
+
+    /*var bb = 1;
+    function aa(bb) {
+        bb = 2;
+        alert(bb);
+    };
+    aa(bb);
+    alert(bb);*/
+
+    /*function bindThis(f, oTarget) {
+        return  f.bind(oTarget);
+    }
+
+    var a = bindThis(function(a, b){return this.test + a + b}, {test: 1})(2, 3);
+    console.log(a);*/
+
+    /*function count(str) {
+        var obj = {};
+        for(var i=0;i<str.length;i++){
+            var val = str.charAt(i);
+            if(obj[val]){
+                obj[val] ++;
+            }
+            else{
+                obj[val] = 1;
+            }
+        }
+        return obj;
+    }
+
+    var abc = count("nihao woshi");
+    console.log(abc);*/
+
+    /*function cssStyle2DomStyle(sName) {
+        return sName.replace(/\-(\w)(\w+)/g,function(a,b,c){
+            return b.toUpperCase()+ c.toLowerCase();
+        }).replace(/\w/,function(a){
+            return a.toLowerCase();
+        })
+    }
+
+    var val = cssStyle2DomStyle('-font-size');
+    console.log(val);*/
+
+    /*function strLength(s, bUnicode255For1) {
+        var len = 0;
+        if(bUnicode255For1 === true){
+            return s.length;
+        }
+        else{
+            s.split("").forEach(function(res){
+                if(res.charCodeAt()>255){
+                    len += 2;
+                }
+                else{
+                    len += 1;
+                }
+            })
+        }
+        return len;
+    }
+
+    var len = strLength('hello world, 牛客', false);
+    console.log(len);*/
+
+    /*Array.prototype.uniq = function () {
+        var arr = [];
+        var flag = true;
+        for(var i=0;i<this.length;i++){
+            if(arr.indexOf(this[i]) == -1){
+                if(this[i] != this[i]){
+                    if(flag){
+                        arr.push(this[i]);
+                        flag = false;
+                    }
+                }else{
+                    arr.push(this[i]);
+                }
+            }
+        }
+        return arr;
+    }
+
+    var arr = [false, true, undefined, null, NaN, 0, 1, {}, {}, 'a', 'a', NaN].uniq()
+    console.log(arr);*/
+
+    /*function formatDate(oDate,sFormation){
+        var obj = {
+            yyyy:oDate.getFullYear(),
+            yy:oDate.getFullYear()%100/10 == 0?'0'+oDate.getFullYear()%100:oDate.getFullYear()%100,
+            MM:oDate.getMonth(),
+            M:oDate.getMonth(),
+            dd:oDate.getDay(),
+            d:oDate.getDay(),
+            HH:oDate.getHours(),
+            H:oDate.getHours(),
+            hh:oDate.getHours(),
+            h:oDate.getHours(),
+            mm:oDate.getMinutes(),
+            m:oDate.getMinutes(),
+            ss:oDate.getSeconds(),
+            s:oDate.getSeconds(),
+            w:function(){
+                var day = ["日","一","二","三","四","五","六"];
+                return day[oDate.getDay()];
+            }
+        }
+    }
+    var abc = formatDate(new Date(1409894060000), 'yyyy-MM-dd HH:mm:ss 星期w');*/
+
+/*    function GetQueryString(name)
+    {
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r!=null)return  unescape(r[2]); return null;
+    }
+
+    // 调用方法
+    alert(GetQueryString("参数名1"));
+    alert(GetQueryString("参数名2"));
+    alert(GetQueryString("参数名3"));*/
+
+    /*function Polygon(sides){
+        if(this instanceof Polygon){
+            this.sides = sides;
+            this.getArea = function(){
+                return 0;
+            };
+        }else{
+            return new Polygon(sides);
+        }
+    }*/
+    /*function Polygon(sides){
+        this.sides = sides;
+        this.getArea = function(){
+            return 0;
+        };
+    }
+
+    function Rectangle(width,height){
+        Polygon.call(this,2);
+        this.width = width;
+        this.height = height;
+        this.getArea = function(){
+            return this.width*this.height;
+        };
+    }
+
+    //Rectangle.prototype = new  Polygon();
+
+    var rect = new Rectangle(5,10);
+    alert(rect.sides);
+    alert(rect.getArea());*/
+
+
+
+/*    var _operaTor_table = 1;
+    var type = {1:"移动",2:"联通",3:"电信"};
+    var operaTor_table = type[_operaTor_table];
+    console.log(operaTor_table);*/
+
+
+    /*var obj = {a:1,b:2};
+    for(var prop in obj){
+        if(obj.hasOwnProperty(prop)){
+        console.log(obj[prop]);
+        console.log(prop);
+        }
+    }*/
+
+    /*function doSometing(){
+        var result = 10+value;
+        var value = 10;
+        console.log(result);
+    }
+    doSometing();*/
+
+    /*var arr = [1,2,3,4,5];
+
+    Array.prototype.isArray = function(){
+        if(typeof Array.isArray === 'function'){
+            return Array.isArray(this);
+        }else{
+            return Object.prototype.toString.call(this) === '[object Array]';
+        }
+    }
+
+    var isArray = arr.isArray();
+    console.log(isArray);*/
+
+   /* var A = {
+        aFun:function(){
+
+        },
+        aFun1:function(){
+            *//*(function(){
+                B.bFun1();
+            });*//*
+            document.getElementById('btn').addEventListener('click',function(){
+                B.bFun1();
+            })
+        }
+    }
+    var B = {
+        bFun:function(){
+            alert("bFun");
+        },
+        bFun1:function(){
+            this.bFun();
+        }
+    }
+
+    A.aFun1();*/
+
+
+</script>
+</body>
+</html>

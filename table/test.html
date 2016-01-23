@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <script src="../js/jquery/jquery.min.js"></script>
+</head>
+<body>
+
+<table id="myTable">
+    <tr>
+        <td>
+            <a href="#" class="up">Up</a> <a href="#" class="down">Down</a>
+        </td>
+        <td>
+            One444444444iiiiiiiiiiifdsfsdfsfsfsdfsdfsd
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="#" class="up">Up</a> <a href="#" class="down">Down</a>
+        </td>
+        <td>
+            Two
+        </td>
+    </tr>
+    <tr>
+        <td style="display:none">
+            <a href="#" class="up">Up</a> <a href="#" class="down">Down</a>
+        </td>
+        <td>
+            Three
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="#" class="up">Up</a> <a href="#" class="down">Down</a>
+        </td>
+        <td>
+            Four
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="#" class="up">Up</a> <a href="#" class="down">Down</a>
+        </td>
+        <td>
+            Five
+        </td>
+    </tr>
+</table>
+<br>
+<a href="#" class="add">Add new</a>
+
+<script>
+$(function () {
+$(document).ready(function () {
+setCssRules();
+
+$(".up,.down").live('click', function () {
+var row = $(this).parents("tr:first");
+if ($(this).is(".up")) {
+row.insertBefore(row.prev());
+} else {
+row.insertAfter(row.next());
+}
+});
+$(".add").click(function () {
+$('#myTable tr:last').after('<tr><td><a href="#" class="up">Up</a><a href="#" class="down">Down</a></td><td>New</td></tr>');
+setCssRules();
+$("#myTable").tableDnD();
+});
+});
+function setCssRules() {
+// this would be better implemented in a CSS file
+jQuery('#myTable tr:not(\'#rowHeader\')')
+.css('cursor', 'pointer')
+.mouseover(function () {
+jQuery(this).css('background-color', '#c0c0c0');
+})
+.mouseout(function () {
+jQuery(this).css('background-color', '#ffffff');
+});
+}
+$('#myTable td').live('click', function () {
+var tr = $(this).parent();
+for (var i = 0; i < tr.children().length; i++) {
+if (tr.children().get(i) == this) {
+var column = i;
+break;
+}
+}
+
+var tbody = tr.parent();
+for (var j = 0; j < tbody.children().length; j++) {
+if (tbody.children().get(j) == tr.get(0)) {
+var row = j;
+break;
+}
+}
+
+for (var i = 0; i < tr.children().length; i++) {
+for (var j = 0; j < tbody.children().length; j++) {
+var tempcell = $('#myTable tr:eq(' + j + ') td:eq(' + i + ')');
+$(tempcell).css('background-color', '#ffffff');
+}
+}
+var cell = $('#myTable tr:eq(' + row + ') td:eq(' + column + ')');
+if (cell.length == 0) {
+//alert('Undefined');
+}
+else if (column == 1) {
+//alert(row+'  '+column+' '+cell.text());
+$(cell).css('background-color', '#c0c0c0');
+
+}
+
+});
+
+});
+</script>
+</body>
+</html>

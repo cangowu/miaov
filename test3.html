@@ -3,8 +3,24 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
+    <style>
+        body{
+            background: grey;
+        }
+        .box{
+            width: 500px;
+            height: 400px;
+            background:rgba(123,255,123,.1);
+        }
+    </style>
 </head>
 <body>
+
+<div class="box">
+    姓名<input type="text"/><br/>
+    密码<input type="text"/>
+</div>
+
 
 <div>
     <h2>剩余时间为：</h2>
@@ -25,13 +41,13 @@
 </div>
 
 <script>
-    window.onload = function(){
+    /*window.onload = function(){
         var a = {n:1};
         var b = a;
         a.x = a = {n:2};
         console.log(a.x);
         console.log(b.x);
-    }
+    }*/
     /*window.onload = function(){
         var F = function(){};
         Object.prototype.a = function(){ alert("object"); };

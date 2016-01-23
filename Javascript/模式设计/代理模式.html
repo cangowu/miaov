@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+<script>
+    //代理模式需要三方
+    //1.买家
+    function maijia(){
+        this.name = "小明";
+        this.money = "30万";
+    }
+    //2.中介
+    function zhongjie(){
+    }
+    zhongjie.prototype.maifang = function(){
+        //new fongdong(new maijia()).maifang("20万");
+        new fongdong(new maijia()).maifang("20万");
+    }
+    //3.卖家
+    function fongdong(maijia){
+        this.maijia_name = maijia.name;
+        this.maijia_money = maijia.money;
+        this.maifang = function(money){
+//            alert("收到了来自【"+this.maijia_name+"】"+money+"人民币");
+            alert("收到了来自【"+this.maijia_name+"】"+this.maijia_money+"人民币");
+        }
+    }
+
+    (new zhongjie()).maifang();
+</script>
+
+<script>
+
+//    A2B
+    function A(){
+        this.money = "20RMB";
+    }
+    function to(){
+        if(!(this instanceof to)){
+            return new to;
+        }
+    }
+    to.prototype.maifang = function(){
+        var a = new A();
+        new B().maifang(a.money);
+    }
+    function B(){
+        this.maifang = function(money){
+            alert("收到了钱"+money);
+        }
+    }
+
+    (new to()).maifang();
+    to().maifang();
+</script>
+</body>
+</html>

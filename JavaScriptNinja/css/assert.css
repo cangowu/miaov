@@ -1,0 +1,13 @@
+#result li + li {
+    margin-top: 5px;
+}
+#result li.pass {
+    color:green;
+    padding: 5px;
+    border: 1px solid green;
+}
+#result li.fail {
+    color: red;
+    padding: 5px;
+    border: 1px solid red;
+}

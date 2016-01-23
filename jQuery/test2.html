@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+    <script src="../js/jquery-tmpl/jquery.tmpl.min.js"></script>
+    <style>
+        .job-title {
+        position: relative;
+        float: left;
+        height: 70px;
+        margin: 0 30px 25px 0;
+        padding: 0 25px;
+        line-height: 70px;
+        font-size: 22px;
+        color: #c22830;
+        background: blue;
+        border-top: 4px solid;
+        }
+        .job-title:after {
+            content: '';
+            position: absolute;
+            right: -30px;
+            top: -4px;
+            width: 0;
+            height: 0;
+            border-width: 75px 30px 0 0;
+            border-style: solid;
+            border-color: #e1e1e1 transparent  transparent ;
+        }
+        .test{
+            position: relative;
+            border: 1px solid #808080;
+            height: 100px;
+            width: 100px;
+            background: green;
+        }
+        .test:hover{
+            background: red;
+            -webkit-transition: all 1s;
+            -moz-transition: all 0.4s;
+            -o-transition: all 0.4s;
+        }
+        /*.test:after{
+            content: '';
+            position: absolute;
+            right: -102px;
+            top:-1px;
+            width: 0;
+            height: 0;
+            border-width: 51px 0px 51px 102px;
+            border-style: solid;
+            border-color:transparent transparent transparent green;
+        }*/
+    </style>
+</head>
+
+<body>
+<div class="test">
+
+</div>
+<br/>
+<div class="job-title">
+123444444444
+</div>
+<div id="main">
+
+</div>
+
+
+<script>
+$(function () {
+    var comics = [{
+        imgSrc:"abc.jpg",
+        title:"Captain",
+        year:"2010",
+        number:"1",
+        text:"<h1>123</h1>"
+    },{
+        imgSrc:"abc.jpg",
+        title:"Captain",
+        year:"2010",
+        number:"1",
+        text:"<h1>123</h1>"
+    }]
+    $("#comics").tmpl(comics).appendTo("#main");
+});
+</script>
+<script id="comics" type="text/x-jquery-tmpl">
+    <div class="comic"><img src="${imgSrc}"/>
+        <div class="details">
+            <div class="title">
+                <h3>${title}</h3>
+            </div>
+            <div class="year">
+                ${year}
+            </div>
+            <div class="number">
+                ${number}
+            </div>
+            <div>
+                {{html text}}
+            </div>
+        </div>
+    </div>
+</script>
+</body>
+</html>

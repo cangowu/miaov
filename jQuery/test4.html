@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无标题文档</title>
+    <style>
+        /*body{
+            margin:0;
+            padding:0;
+            min-width:600px;
+        }
+        .main{
+            float:left;
+            width:100%;
+        }
+        .main_body{
+            margin:0 210px;
+            background:#888;
+            height:500px;
+        }
+        .left,.right{
+            float:left;
+            width:200px;
+            height:200px;
+            background:#F60;
+        }
+        .left{
+            margin-left:-100%;
+        }
+        .right{
+            margin-left:-200px;
+        }*/
+
+
+        /*body,ul,li{margin:0;padding:0;}
+        ul,li{list-style:none;}
+        #test{
+            margin:20px;
+            width:390px;
+            background:#F4F8FC;
+            border-radius:3px;
+            border:2px solid #D7E2EC;
+        }
+        #test li{
+            height:25px;
+            line-height:25px;
+            padding:5px;
+            border-bottom:1px dotted #D5D5D5;
+            margin-bottom:-1px;
+        }*/
+
+
+
+        body,p{
+            margin:0;
+            padding:0;
+        }
+        #wrap{
+            overflow:hidden;
+            width:580px;
+            margin:0 auto;
+        }
+        #left,#center,#right{
+            margin-bottom:-200px;
+            padding-bottom:200px;
+        }
+        #left {
+            float:left;
+            width:140px;
+            background:#777;
+        }
+        #center {
+            float:left;
+            width:300px;
+            background:#888;
+        }
+        #right {
+            float:right;
+            width:140px;
+            background:#999;
+        }
+        p {color:#FFF;text-align:center}
+
+        .pass{
+            color: #ffffff;
+            background: green;
+            padding: 5px;;
+            border: 1px solid green;
+        }
+        .fail{
+            color: #fff;
+            background: red;
+            padding: 5px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+<!--<div class="main">-->
+    <!--<div class="main_body">Main</div>-->
+<!--</div>-->
+<!--<div class="left">Left</div>-->
+<!--<div class="right">Right</div>-->
+
+
+
+<!--<ul id="test">-->
+    <!--<li>Test</li>-->
+    <!--<li>Test</li>-->
+    <!--<li>Test</li>-->
+    <!--<li>Test</li>-->
+    <!--<li>Test</li>-->
+<!--</ul>-->
+
+
+<!--<div id="wrap">
+    <div id="left">
+        <p style="height:50px">style="height:50px"</p>
+    </div>
+    <div id="center">
+        <p style="height:100px">style="height:100px"</p>
+    </div>
+    <div id="right">
+        <p style="height:200px">style="height:200px"</p>
+    </div>
+</div>-->
+
+<div id="result">
+
+</div>
+
+<script>
+    function assert(value, desc){
+        var li = document.createElement("li");
+        li.className = value ? "pass" : "fail";
+        li.appendChild(document.createTextNode(desc));
+        document.getElementById("result").appendChild(li);
+    }
+
+
+    function useless(callback){
+        return callback();
+    }
+
+    var text = "Demo arigato!";
+    assert(useless(function(){
+        return text;
+    }) === text,"This useless function work! " + text); 5g
+
+
+
+</script>
+</body>
+</html>       

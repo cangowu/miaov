@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>兼容LocalStorage</title>
+</head>
+<body>
+
+<script>
+    var localData = {
+        hName:location.hostname?location.hostname:'localData',
+        isLocalStorage:window.localStorage?true:false,
+        dataDom:null,
+
+        initDom:function(){//初始化userData
+            if(!this.dataDom){
+                try{
+                    this.dataDom.type = 'hidden';
+                    this.dataDom.style.display = 'none';
+                    this.dataDom.addBehavior('#default#userData');//userData的语法
+
+                    document.body.appendChild(this.dataDom);
+                    var exDate = new Date();
+                    exDate = exDate.getDate() + 30;
+                    this.dataDom.expires = exDate.toUTCString();//设置过期时间
+                }catch (ex){
+                    return false;
+                }
+            }
+            return true;
+        },
+        set:function(key,value){
+            if(this.isLocalStorage){
+                window.localStorage.setItem(key,value);
+            }else{
+                if(this.initDom()){
+                    this.dataDom.load(this.hName);
+                    this.dataDom.setAttribute(key,value);
+                    this.dataDom.save(this.hName);
+                }
+            }
+        },
+        get:function(key){
+            if(this.isLocalStorage){
+                return window.localStorage.getItem(key);
+            }else{
+                if(this.initDom()){
+                    this.dataDom.load(this.hName);
+                    return this.dataDom.getAttribute(key);
+                }
+            }
+        },
+        remove:function(){
+            if(this.isLocalStorage){
+                window.localStorage.removeItem(key);
+            }else{
+                if(this.initDom()){
+                    this.dataDom.load(this.hName);
+                    this.dataDom.removeAttribute(key);
+                    this.dataDom.save(this.hName);
+                }
+            }
+        }
+    }
+
+
+    localData.set('wzg',"我是好人");
+    console.log(localData.get('wzg'));
+</script>
+
+</body>
+</html>

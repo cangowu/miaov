@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+    <script>
+        function test(){
+            console.log(123);
+        }
+        //立即调用函数
+        /*(function(x,y){
+            console.log(x+y);
+        })(5,6);*/
+        //
+        /*var x=42;
+        console.log(x);
+        var message = (function(x){
+            return function(){
+                console.log("x is"+x);
+            }
+        })(x);
+        message();
+        x=12;
+        console.log(x);
+        message();*/
+/*        obj = {};
+        obj.method = function(){
+            var that = this;
+            this.counter = 0;
+
+            var count = function(){
+                that.counter += 1;
+                console.log(that.counter);
+            }
+
+            count();
+            count();
+            console.log(this.counter);
+        }
+        obj.method();*/
+        /*//使用模块
+        template = {};
+        template.createObj = (function(){
+            //私有成员
+            var _age = "";
+            var _name = "";
+
+            //公有访问方法
+            return{
+                //设置器
+                setAge:function(age){
+                    this._age = age;
+                },
+                setName:function(age){
+                    this._name = age;
+                },
+                getAge:function(age){
+                    return this._age;
+                },
+                getName:function(age){
+                    return this._name;
+                },
+                print:function(){
+                    console.log(this.getName() + ":" + this.getAge());
+                }
+            }
+        });
+        var wzg = template.createObj();
+        wzg.setName("吴志刚");
+        //wzg.setAge("24");
+        wzg.print();*/
+        /*//扩展类型
+        Function.prototype.method = function(name,func){
+            this.prototype[name] = func;
+            return this;
+        }
+        *//*String.prototype.boolean = function(){
+            return "true" == this;
+        }*//*
+        String.method("boolean",function(){
+           return "true" == this;
+        });
+        var t = 'true'.boolean();
+        var f = 'false'.boolean();
+        console.log(t);
+        console.log(f);*/
+
+        /*console.log("|"+$.trim("  wuzhig ang  ")+"|");
+        console.log("|"+ $.unique([1,2,3,4,5,1,2,3])+"|");*/
+
+    </script>
+    <style>
+        body{
+            background-color: #000000;
+        }
+        h1{
+            color:#ffff00;
+        }
+        img#spaceShip{
+            position: absolute;
+            left: 0;
+            top:80%;
+            background-color: blue;
+        }
+        img#invader{
+            position: absolute;
+            left:25%;
+            top:10%;
+        }
+        div#laser{
+            position: absolute;
+            display: none;
+            left: 0;
+            top:0;
+            width: 10px;
+            height: 10px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+
+<img src="spaceShip.png" id="spaceShip"/>
+<img src="invader.png" id="invader"/>
+
+<div id="laser"></div>
+
+<script>
+    $(function(){
+        var winWidth = $(document).width();
+        var duration = 1000;
+
+        $(document).keydown(function(){
+            var keyCode = event.keyCode||event.which;
+            var keyMap = {left:37,up:38,right:39,down:40};
+
+            switch (keyCode){
+                case keyMap.left:
+                    $("#spaceShip").animate({
+                        left:"-=50"
+                    },200);
+                    break;
+                case keyMap.up:
+                    var ufoLeft = $("#spaceShip").offset().left;
+                    var ufoTop = $("#spaceShip").offset().top;
+                    $("#laser").offset({left:ufoLeft+87,top:ufoTop-30});
+                    $("#laser").css("display","block")
+                            .animate({top:10},200,function(){
+                               var invaderLeft = $("#invader").offset().left;
+                               var invaderWidth = $("#invader").width();
+                               var laserLeft = $("#laser").offset().left;
+
+                                if(laserLeft >= invaderLeft &&
+                                        laserLeft <= invaderLeft + invaderWidth){
+                                    $("#invader").hide();
+                                    $("body").html("<h1>Direct Hit!</h1>");
+                                }
+
+                                $("#laser").offset({left:0,top:0});
+                                $("#laser").css("display","none");
+                            });
+                    break;
+                case keyMap.right:
+                    $("#spaceShip").animate({
+                        left:"+=50"
+                    },200);
+                    break;
+            }
+        });
+
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<HTML>
+<HEAD>
+    <title>userData只能在ie8以下使用</title>
+    <STYLE>
+        .userData{behavior:url(#default#userdata);}
+    </STYLE>
+    <SCRIPT>
+        function fnSaveInput(){
+            var oPersist=oPersistForm.oPersistInput;
+            oPersist.setAttribute("sPersist",oPersist.value);//将oPersist.value存储为sPersist属性
+            oPersist.save("oXMLBranch"); //存储在名为oXMLBranch的UserData存储区
+        }
+        function fnLoadInput(){
+            var oPersist=oPersistForm.oPersistInput;
+            var abc=oPersist.load("oXMLBranch"); //载入在名为oXMLBranch的UserData存储区
+            oPersist.value=oPersist.getAttribute("sPersist");//将sPersist属性赋值给oPersist.value
+        }
+    </SCRIPT>
+</HEAD>
+<BODY>
+<FORM ID="oPersistForm">
+    <INPUT CLASS="userData" TYPE="text" ID="oPersistInput">
+    <INPUT TYPE="button" VALUE="Load" onclick="fnLoadInput()">
+    <INPUT TYPE="button" VALUE="Save" onclick="fnSaveInput()">
+</FORM>
+</BODY>
+</HTML>  

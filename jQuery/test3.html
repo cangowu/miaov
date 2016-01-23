@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Insert title here</title>
+    <style type="text/css">
+        .div{
+            width: 100px;
+            height:100px;
+            background-color:red;
+            -webkit-transition: all 0.2s liner;
+            -moz-transition: all 0.2s liner;
+            -o-transition: all 0.2s liner;
+            transition: all 0.2s liner;
+        }
+        .div:HOVER{
+            color: white;
+            background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 100%);
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 100%);
+
+        }
+        .div:HOVER:AFTER {
+            background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 100%);
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 100%);
+            width: 100%;
+
+        }
+        .div:AFTER {
+            background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%);
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%);
+            -webkit-transition: all 0.2s liner;
+            -moz-transition: all 0.2s liner;
+            -o-transition: all 0.2s liner;
+            transition: all 0.2s liner;
+        }
+    </style>
+
+
+</head>
+<body>
+<div class="div">
+    aa
+</div>
+
+</body>
+</html>
