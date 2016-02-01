@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+
+    //1.原始写法
+    function m1() {
+        alert("m1");
+    }
+
+    function m2() {
+        alert("m2");
+    }
+
+    m1();
+    //2.对象写法
+    var module1 = new Object({
+
+        _count: 0,
+
+        m1 : function(){
+            alert("m1");
+        },
+
+        m2 : function(){
+            alert("m2");
+        }
+    });
+
+    module1.m1();
+
+    //3.立即执行函数写法
+    var module2 = (function(){
+        var _count = 0;
+
+        var m1 = function(){
+            alert("m1");
+        };
+
+        var m2 = function(){
+            alert("m2");
+        }
+
+        return {
+            m1 : m1,
+            m2 : m2
+        }
+
+    })();
+
+    module2.m1();
+
+    //4.放大模式
+    var module3 = {};
+
+    module3 = (function(mod){
+
+        mod.m3 = function(){
+            alert("m3");
+        }
+
+        return mod;
+
+    })(module3);
+
+    module3.m3();
+
+    //5.宽放大模式--立即执行函数可以是空对象
+    var module4 = {};
+
+    module4 = (function(mod){
+
+        return mod;
+
+    })(module4 || {});
+
+</script>
+
+
+
+
+
+
+
+</body>
+</html>

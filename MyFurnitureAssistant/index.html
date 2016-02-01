@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>家具选购助手</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <!--引入外部库文件-->
+    <script type="text/javascript" src="CreateJS/easeljs-0.8.2.min.js"></script>
+    <script type="text/javascript" src="CreateJS/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="js/core.js"></script>
+    
+    <script type="text/javascript" src="js/FurnitureView.js"></script>
+    <script type="text/javascript" src="js/Main.js"></script>
+    <script type="text/javascript" src="js/MyFurnitureAssistant.js"></script>
+    <script type="text/javascript" src="js/ChooseFurniturePanel.js"></script>
+    <script type="text/javascript" src="js/MeasureLine.js"></script>
+
+    <!-- Buttons 库的核心文件 -->
+    <!-- <link rel="stylesheet" href="css/buttons.css" /> -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <!-- 只有使用字体图标时才需要加载 Font-Awesome -->
+     <link rel="stylesheet" type="text/css" href="components/FontAwesome/css/font-awesome.min.css">
+
+
+</head>
+<body onload="init();">
+    <div class="btnGroup">
+        <div class="btn-group">
+            <button type="button" id="photoButton" class="btn btn-warning"><i class="icon-camera icon-large"></i><br/>拍摄照片</button>
+        </div>
+        <div class="btn-group">
+           <button type="button" id="measureLineButton" class="btn  btn-warning"><i class="icon-tag icon-large"></i><br/>测量线</button>
+        </div>
+        <div class="btn-group">
+            <button type="button" id="furnitureButton" class="btn  btn-warning"><i class="icon-plus-sign icon-large"></i><br/>添加家具</button>
+        </div>
+    </div>
+    <div class="backImg">
+        <canvas id="housePic" class="housePic"></canvas>
+    </div>
+    <div class="backFurn">
+        <canvas id="chooseFurniturePanel" class="choseFur"></canvas>
+    </div>
+    
+    <canvas id="demo" title = "After"></canvas>
+
+</body>
+</html>

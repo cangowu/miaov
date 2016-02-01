@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+<script>
+
+    var obj = {
+        yes: function() {
+            this.val = true;
+        },
+        no: function() {
+            this.val = false;
+        }
+    };
+
+    console.log(obj.val);
+
+    obj.yes();
+    console.log(obj.val);
+
+    window.no = obj.no;
+    window.no();//上下文切换至window
+
+    console.log(obj.val);
+
+    console.log(window.val);
+
+
+/*    String.prototype.trim = function(){
+        return this.replace(/(^\s+)|(\s+$)/g,'');
+    }
+
+    var val = " abc ".trim();
+    console.log(val);*/
+
+    var a = [2, -3, 4, 5, -1];
+    var b = [2, -3, 4, 5, -1];
+    function sort(arr){
+        arr.sort(function(a, b){
+            return a - b;
+        });
+        return arr;
+    }
+    console.log(sort(a));
+</script>
+
+</body>
+</html>

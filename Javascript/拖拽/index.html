@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #div1{
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+        }
+        #div2{
+            width: 100px;
+            height: 100px;
+            background: blue;
+            position: absolute;
+        }
+    </style>
+
+    <script src="Drag.js"></script>
+    <script src="LimitDrag.js"></script>
+    <script>
+        window.onload = function(){
+            new Drag('div1');
+            new Drag('div2');
+//            new LimitDrag('div2');
+        }
+
+        var abc = function (){
+            console.log(arguments);
+        }
+        abc();
+    </script>
+</head>
+<body>
+
+
+
+<div id="div1">
+
+</div>
+<div id="div2">
+
+</div>
+</body>
+</html>

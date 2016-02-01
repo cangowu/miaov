@@ -7,62 +7,491 @@
     <link rel="stylesheet" href="css/assert.css"/>
     <script src="js/log.js"></script>
     <script src="js/assert.js"></script>
+
+    <style>
+        #input {
+            position: fixed;
+            bottom: 10px;
+        }
+
+        #box {
+            position: absolute;
+            border: 1px solid red;
+            /*left: 300px;*/
+            /*top: 300px;*/
+        }
+    </style>
 </head>
 <body>
 <div id="result">
 
 </div>
 
+
+<div class="abc">
+
+</div>
+
+<div id="box">Hello</div>
+
+<input type="button" value="btn" id="test"/>
+
+<!--<input type="text" id="input"/>-->
+
+
+</div>
 <script>
-    function fn(){
-        var arr = [1,2,3,4,5];
-        arr.splice(2,0,12);
 
-        console.log(arr);
-        for(var i = 0; i < arr.length; i++){
-            console.log(arr[i]);
+/*
+//with的用法
+var katana = {
+    isSharp: true,
+    use: function () {
+        this.isSharp = !this.isSharp;
+    }
+};
+
+with(katana){
+    isSharp = false;
+
+    assert(katana.isSharp === false, "properties can be assigned");
+
+    katana.cut = function(){
+        isSharp = false;
+    }
+
+    assert(typeof katana.cut == "function", "new properties can be created on the scoped object");
+    assert(typeof window.cut == "function", "new properties can be created on the scoped object");
+}*/
+
+
+/*
+
+ var a = "function abc(){alert(123)}; window.abc = abc;";
+
+ function createFun(str){
+ return eval(str);
+ }
+
+ createFun(a);
+ abc();
+ */
+
+
+
+
+/*//运动
+ var timers = {
+
+ timerID: 0,
+ timers: [],
+
+ add: function(fn){
+ this.timers.push(fn);
+ },
+
+ start: function(){
+ if(this.timerID){
+ return;
+ }
+ (function runNext(){
+ if(timers.timers.length > 0){
+ for(var i = 0; i < timers.timers.length; i++){
+ if(timers.timers[i]() === false){
+ //                        console.log(timers.timers);
+ //                        console.log(i);
+ timers.timers.splice(i, 1);
+ //                        console.log(timers.timers);
+ i--;
+ }
+ }
+ timers.timerID = setTimeout(runNext, 0);
+ }
+ })();
+ },
+
+ stop: function(){
+ clearTimeout(this.timerID);
+ this.timerID = 0;
+ }
+
+ };
+
+ var box = document.getElementById("box"),
+ x = 0,
+ y = 0,
+ r = 400;
+ timers.add(function(){
+ box.style.left = x + 'px';
+ if(++x > r){
+ box.style.display = "none";
+ return false;
+ }
+ box.style.top = y + 'px';
+ y = r - Math.sqrt(r*r - x*x);
+
+ });
+ //timers.add(function(){
+ //    box.style.left = x + 'px';
+ //    if(++x > 100){
+ //        return false;
+ //    }
+ //});
+ //timers.add(function(){
+ //    box.style.top = y + 'px';
+ //    y += 4;
+ //    if(y > 100){
+ //        return false;
+ //    }
+ //});
+ timers.start();*/
+
+
+
+
+
+
+
+///正则
+//console.log("fontFamily".replace(/([A-Z])/g, "-$1").toLowerCase());
+//var pattern = /((ninja-)+)sword/;dc
+/*var pattern = /((?:ninja-)+)sword/;
+ var ninjas = "ninja-ninja-sword".match(pattern);
+
+ console.log(ninjas);*/
+
+/*
+ var str = "border-bottom-width".replace(/-(\w)/g,function(all, letter){
+ return letter.toUpperCase();
+ });
+
+ console.log(str);
+ */
+
+/*//子类化原生对象
+ //1.扩展出子类
+ function MyArray(){}
+
+ MyArray.prototype = new Array();
+
+ var mine = new MyArray();
+ mine.push(1,2,3,4);
+
+ console.log(mine.length);*/
+
+/*//2.模拟Array的功能
+ function MyArray(){}
+ MyArray.prototype.length = 0;
+
+ (function(){
+ var methods = ["push", "pop", "shift", "unshift", "slice", "splice", "join"];
+
+ for(var i = 0; i < methods.length; i++){
+ //        console.log(methods[i]);
+ (function(name){
+ //            console.log(name);
+ //            console.log(Array.prototype[name].apply(MyArray.prototype, arguments));
+ MyArray.prototype[name] = function(){
+ return Array.prototype[name].apply(this, arguments);
+ }
+ })(methods[i]);
+ }
+ })();
+
+ var mine = new MyArray();
+ mine.push(1, 2, 3);
+
+ console.log(mine);*/
+
+
+
+/*var obj = {a:1, b:2, c:3}
+ obj.d = 10;
+
+ Object.prototype.keys = function(){
+ for(var i in this){
+ if(this.hasOwnProperty(i)){
+ console.log(i);
+ }
+ }
+ };
+
+ obj.keys();*/
+
+
+/*//原型
+ function Ninja(){
+ this.swung = true;
+ }
+
+ var ninja = new Ninja();
+ var ninja2 = new Ninja();
+
+ Ninja.prototype.swingSword = function(){
+ return this.swung;
+ };
+
+ //assert(ninja.swingSword(), "Method exits,even out of order");
+ //console.log(ninja.prototype.hasOwnProperty("swingSword"));
+ console.log(Ninja.prototype.hasOwnProperty("swingSword"));//jtrue
+ console.log(ninja === ninja2);*/
+
+/*/*//*****偏应用函数---没搞懂，下次再看看
+ Function.prototype.partial = function () {
+    var fn = this, args = Array.prototype.slice.call(arguments);
+
+    return function () {
+        var arg = 0;
+        for (var i = 0; i < args.length && arg < arguments.length; i++) {
+            if (args[i] === undefined) {
+                args[i] = arguments[arg++];
+            }
         }
+        console.log(args);
+        return fn.apply(this, args);
     }
-    fn(1,2,3,4,5);
+};
 
-    /*function isNimble(){
-        return true;
-    }
+ var delay = setTimeout.partial(undefined, 1000);
+ delay(function(){
+   assert(true, "A call to this function will be delayed 1000 ms");
+});*/
 
-    assert(typeof window.isNimble === "function", "isNimble() defined");
-    assert(isNimble.name === "isNimble", "isNimble() has a name");
-
-    var canFly = function(){
-        return true;
-    }
-
-    assert(typeof window.canFly === "function", "canFly() defined");
-    assert(canFly.name === "", "canFly has no name");
-
-    window.isDeadly = function(){
-        return true;
-    }
-
-    assert(typeof window.isDeadly === "function", "isDeadly defined");
-
-    function outer(){
-        assert(typeof inner === "function", "inner() in scope before declaration");
-        function inner(){}
-        assert(typeof inner === "function", "inner() in scope after declaration");
-        assert(window.inner === undefined, "inner() not in global scope");
-    }
-
-    outer();
-
-    assert(window.inner === undefined, "inner() still not in global scope");
-    window.wieldsSword = function swingsSword() {
-        return true;
-    }
-
-    assert(window.wieldsSword.name === "swingsSword", "wieldSword's real name is swingSword");
+//String.prototype.csv = String.prototype.split.partial(/,\s*/);
+//
+//var result = ("mugan, Jin, Fuu").csv();
+//
+//console.log(result);
 
 
-    console.log(isNimble.name);*/
+/*//绑定函数上下文
+ function bind(context, name){
+ return function(){
+ return context[name].apply(context, arguments);
+ }
+ }
+
+
+ var button = {
+ clicked: false,
+ click: function(){
+ this.clicked = true;
+ assert(button.clicked, "The button ha been clicked");
+ }
+ };
+
+ var elem = document.getElementById("test");
+ //    elem.addEventListener("click", bind(button, "click"), false);
+ elem.addEventListener("click", button.click.bind(button), false);   */
+
+
+
+
+
+
+/*//测试addMethod方法
+ function addMethod(object, name, fn){
+ var old = object[name];
+ object[name] = function(){
+ if(fn.length == arguments.length){
+ console.log("a");
+ return fn.apply(this, arguments);
+ }else if(typeof old == "function"){
+ console.log("b");
+ return old.apply(this, arguments);
+ }
+ }
+ }
+
+ var ninja = {
+ values: ["Dean Edwards", "Sam Stephenson", "Alex Russell"]
+ };
+ console.log(ninja);
+ //绑定一个单参数的方法
+ addMethod(ninja, "find", function(name){
+ var ret = [];
+ for(var i = 0; i < this.values.length; i++){
+ if(this.values[i].indexOf(name) == 0){
+ ret.push(this.values[i]);
+ }
+ }
+ return ret;
+ });
+ //绑定一个两个参数的方法
+ addMethod(ninja, "find", function(first, last){
+ var ret = [];
+ for(var i = 0; i < this.values.length; i++){
+ if(this.values[i] == (first + " " + last)){
+ ret.push(this.values[i]);
+ }
+ }
+ return ret;
+ });
+ //    assert(ninja.find("").length == 3, "Found all ninjas");
+ assert(ninja.find("Sam").length == 1, "Found ninja by first name");
+ //    assert(ninja.find("Dean", "Edwards").length == 1, "Found ninja by first name and last name");
+ //    assert(ninja.find("Alex", "Russell", "Jr").length ==  null, "Found nothing");*/
+
+
+
+
+
+
+/*var a = Array.prototype.slice.call([1,2,3,4,5],2);
+ console.log(a);*/
+
+/*function smallest(array){
+ //        return Math.min.call(1,2,3,4,5,4,3);
+ return Math.min.apply(Math, array);
+ }
+ var arr = [3,2,1,4,5]
+ var a = smallest(arr);
+ console.log(a);*/
+
+
+/*//缓存dom元素
+
+ function getElements(name){
+ if(!getElements.cache){
+ getElements.cache = {};
+ }
+ return getElements.cache[name] = getElements.cache[name] || document.getElementsByClassName(name);
+ }
+ var start = new Date().getTime();
+ for(var i = 0;i < 100000; i++){
+ var oDiv = getElements("abc");
+ //        var oDiv = document.getElementsByClassName("abc");
+ }
+ var end = new Date().getTime();
+ console.log (end - start);//返回函数执行需要时间
+
+ start = new Date().getTime();
+ for(var i = 0;i < 100000; i++){
+ //        var oDiv = getElements("abc");
+ var oDiv = document.getElementsByClassName("abc");
+ }
+ end = new Date().getTime();
+ console.log (end - start);//返回函数执行需要时间*/
+
+/*//自记忆函数--缓存记忆昂贵的计算
+
+ function isPrime(value){
+ if(!isPrime.answers){
+ isPrime.answers = {};
+ }
+ if(isPrime.answers[value] != null){
+ return isPrime.answers[value];
+ }
+ var prime = value != 1;//1 can never be prime
+ for(var i = 2; i < value; i++){
+ if(value % i == 0){
+ prime = false;
+ break;
+ }
+ }
+ return isPrime.answers[value] = prime;
+ }
+
+ assert(isPrime(5), "5 is prime!");
+ assert(isPrime(5), "5 is prime!");
+ console.log("-----");
+ assert(isPrime(4), "4 is prime!");
+ assert(isPrime(4), "4 is prime!");
+
+ console.log(isPrime.answers);
+ assert(isPrime.answers[5], "The answer was cached!");
+ //    console.log(isPrime.answers);*/
+
+/*//函数存储
+
+ var store = {
+
+ nextId : 1,
+
+ cache : {},
+
+ add : function(fn) {
+ if(!fn.id){
+ fn.id = store.nextId++;
+ return !!(store.cache[fn.id] = fn);
+ }
+ }
+ };
+
+ function ninja(){};
+
+ assert(store.add(ninja), "Function was safely added.");
+ assert(!store.add(ninja), "But it was only added once.");
+
+ console.log(store);
+ console.log(ninja.id);*/
+
+/*function juggle() {
+ var result = 0;
+ for(var n = 0; n < arguments.length; n++) {
+ result += arguments[n];
+ }
+ this.result = result;
+ }
+
+ var ninja1 = {},
+ ninja2 = {};
+
+ juggle.apply(ninja1, [1,2,3,4]);
+ juggle.call(ninja2,1,2,3);
+
+ assert(ninja1.result === 10, "juggle via apply");
+ assert(ninja2.result === 6, "juggle via call");*/
+
+/*    function fn(){
+ var arr = [1,2,3,4,5];
+ arr.splice(2,0,12);
+
+ console.log(arr);
+ for(var i = 0; i < arr.length; i++){
+ console.log(arr[i]);
+ }
+ }
+ fn(1,2,3,4,5);*/
+
+/*function isNimble(){
+ return true;
+ }
+
+ assert(typeof window.isNimble === "function", "isNimble() defined");
+ assert(isNimble.name === "isNimble", "isNimble() has a name");
+
+ var canFly = function(){
+ return true;
+ }
+
+ assert(typeof window.canFly === "function", "canFly() defined");
+ assert(canFly.name === "", "canFly has no name");
+
+ window.isDeadly = function(){
+ return true;
+ }
+
+ assert(typeof window.isDeadly === "function", "isDeadly defined");
+
+ function outer(){
+ assert(typeof inner === "function", "inner() in scope before declaration");
+ function inner(){}
+ assert(typeof inner === "function", "inner() in scope after declaration");
+ assert(window.inner === undefined, "inner() not in global scope");
+ }
+
+ outer();
+
+ assert(window.inner === undefined, "inner() still not in global scope");
+ window.wieldsSword = function swingsSword() {
+ return true;
+ }
+
+ assert(window.wieldsSword.name === "swingsSword", "wieldSword's real name is swingSword");
+
+
+ console.log(isNimble.name);*/
 </script>
 
 </body>

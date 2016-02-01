@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="myJs/dateHelp.js"></script>
+</head>
+<body>
+
+
+<script>
+
+    var myDate = new DateHelp({
+        date:new Date(),//从此日期开始计算
+        format:'yyyy/MM/dd'
+    });
+
+    console.log(myDate.getThisMonth());
+    console.log(myDate.getThreeMonth());
+    console.log(myDate.getThisYear());
+</script>
+</body>
+</html>

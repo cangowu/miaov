@@ -16,7 +16,7 @@
     var p = new Point(7,5);
     console.log(p);*/
 
-    function callIt(func){
+    /*function callIt(func){
         func();
     }
 
@@ -31,16 +31,36 @@
     callIt(counter.inc.bind(counter));
 
     //console.log(counter.inc);
-    console.log(counter.count);
+    console.log(counter.count);*/
 
 
+    /*function Aaa(){
+        this.a = 1;
+        var _this = this;
+        setInterval(function(){
+            _this.show();
+        },1000);
+    }
 
+    Aaa.prototype.show =    function(){
+        console.log(this.a += 1);
+    };
 
+    var obj = new Aaa();*/
 
+    function Bbb(){
+        this.b = 123
+    }
 
+    Bbb.prototype.show = function(){
+        alert(this.b);
+    }
 
+    Bbb().show();
 
 </script>
 
+
+<input type="button" id="btn1" value="btn"/>
 </body>
 </html>
