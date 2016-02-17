@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>绑定事件处理程序时，设置正确的上下文</title>
+    <link rel="stylesheet" href="css/assert.css"/>
+    <script src="js/log.js"></script>
+    <script src="js/assert.js"></script>
+
+
+</head>
+<body>
+
+<div title="Click me">点击我</div>
+<div title="but only once">只能点一次</div>
+
+</body>
+
+<script>
+    if (document.addEventListener) {
+        this.addEvent = function (elem, type, fn) {
+            elem.addEventListener(type, fn, false);
+            return fn;
+        };
+        this.removeEvent = function (elem, type, fn) {
+            elem.removeEventListener(type, fn, false);
+        }
+    } else if (document.attachEvent) {
+        this.addEvent = function (elem, type, fn) {
+            /*var bound = function(){
+             return fn.apply(elem, arguments);
+             }
+             elem.attachEvent("on" + type, bound);*/
+            elem.attachEvent("on" + type, fn);
+            return fn;
+        };
+        this.removeEvent = function (elem, type, fn) {
+            elem.detachEvent("on" + type, fn);
+        }
+    }
+
+
+    addEvent(window, "load", function () {
+        var elems = document.getElementsByTagName("div");
+
+        for (var i = 0; i < elems.length; i++) {
+            (function (elem) {
+                var handler = addEvent(elem, "click", function () {
+                    this.style.backgroundColor = this.style.backgroundColor == '' ? 'green' : '';
+//                        removeEvent(elem, "click", handler);
+                });
+            })(elems[i]);
+        }
+    });
+</script>
+</html>

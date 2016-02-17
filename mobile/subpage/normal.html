@@ -1,0 +1,163 @@
+<div class="search">
+    <ul>
+        <li>日期</li>
+        <li>病种</li>
+        <li>...</li>
+    </ul>
+</div>
+
+<div id="refresh" class="refresh">
+
+    <div id="chart" class="chart"></div>
+
+    <div class="table">
+        <table>
+            <thead>
+            <tr>
+                <td>test</td>
+                <td>test2</td>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<script>
+
+    require.config({
+        paths: {
+            echarts: './js/echart' //引用资源文件夹路径，注意路径
+        }
+    });
+    require(
+            [
+                'echarts',
+                'echarts/chart/line'   // 按需加载所需图表，用到什么类型就加载什么类型，这里不需要考虑路径
+            ],
+            function (ec) {
+                var myChart = ec.init(document.getElementById('chart'));
+                var ecConfig = require('echarts/config');
+                var option = {
+                    animation: false,
+                    title: {
+                        text: '标题',
+                        x: 'center'
+                    },
+                    tooltip: {
+                        trigger: 'axis'
+                    },
+                    legend: {
+                        data: ['邮件营销', '联盟广告'],
+                        y: "bottom"
+                    },
+                    toolbox: {
+                        show: false, //是否显示工具箱
+                        feature: {
+                            mark: { show: true },
+                            dataView: { show: true, readOnly: false },
+                            magicType: { show: true, type: ['line', 'bar', 'stack', 'tiled'] },
+                            restore: { show: true },
+                            saveAsImage: { show: true }
+                        }
+                    },
+                    //calculable: true,	容易搞错的属性，折线图、柱状图是否叠加
+                    xAxis: [
+                        {
+                            type: 'category',
+                            boundaryGap: false,
+                            data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+                        }
+                    ],
+                    yAxis: [
+                        {
+                            type: 'value'
+                        }
+                    ],
+                    series: [
+                        {
+                            name: '邮件营销',
+                            type: 'line',
+                            stack: '总量',
+                            data: [120, 132, 101, 134, 90, 230, 210]
+                        },
+                        {
+                            name: '联盟广告',
+                            type: 'line',
+                            stack: '总量',
+                            data: [220, 182, 191, 234, 290, 330, 310]
+                        }
+                    ]
+                };
+                myChart.setOption(option);
+            }
+    );
+
+    //加载table数据
+    $('#refresh').dropload({
+        scrollArea: window,
+        domUp: {
+            domClass: 'dropload-up',
+            domRefresh: '<div class="dropload-refresh">↓下拉刷新</div>',
+            domUpdate: '<div class="dropload-update">↑释放更新</div>',
+            domLoad: '<div class="dropload-load"><span class="loading"></span>加载中...</div>'
+        },
+        domDown: {
+            domClass: 'dropload-down',
+            domRefresh: '<div class="dropload-refresh">↑上拉加载更多</div>',
+            domLoad: '<div class="dropload-load"><span class="loading"></span>加载中...</div>',
+            domNoData: '<div class="dropload-noData">暂无数据</div>'
+        },
+        loadUpFn: function (me) {
+            $.ajax({
+                type: 'GET',
+                url: 'json/data.json',
+                dataType: 'json',
+                success: function (data) {
+                    var result = '';
+                    for (var i = 0; i < data.lists.length; i++) {
+                        result += '<tr><td>' + data.lists[i].d + '</td></tr>';
+                    }
+                    // 为了测试，延迟1秒加载
+                    setTimeout(function () {
+                        $('.table tbody').html(result);
+                        // 每次数据加载完，必须重置
+                        me.resetload();
+                    }, 500);
+                },
+                error: function (xhr, type) {
+                    alert('Ajax error!');
+                    // 即使加载出错，也得重置
+                    me.resetload();
+                }
+            });
+        },
+        loadDownFn: function (me) {
+            $.ajax({
+                type: 'GET',
+                url: 'json/data.json',
+                dataType: 'json',
+                success: function (data) {
+                    var result = '';
+                    for (var i = 0; i < data.lists.length; i++) {
+                        result += '<tr><td>' + data.lists[i].d + '</td><td>' + data.lists[i].d1 + '</td></tr>';
+                    }
+                    // 为了测试，延迟1秒加载
+                    setTimeout(function () {
+                        $('.table tbody').append(result);
+                        // 每次数据加载完，必须重置
+                        me.resetload();
+                    }, 500);
+                },
+                error: function (xhr, type) {
+                    alert('Ajax error!');
+                    // 即使加载出错，也得重置
+                    me.resetload();
+                }
+            });
+        },
+        threshold: 50
+    });
+</script>
