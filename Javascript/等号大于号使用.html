@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+
+    var arr = ['val1', 'val2', 'val3'];
+
+    for (var i = 0; i < arr.length; i++) {
+        console.log(arr[i]);
+        console.log(i);
+        console.log(arr);
+    }
+    arr.map(function abc(val, index, array) {
+        console.log(val);
+        console.log(index);
+        console.log(array);
+    });
+
+
+    function output(val, index, array) {
+        console.log(val);
+        console.log(index);
+        console.log(array);
+    }
+
+    arr.map(output);//.apply(output,arguments);
+
+
+</script>
+
+
+</body>
+</html>

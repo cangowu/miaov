@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+<script>
+    function makeCounter() {
+//        "use strict"
+        var i = 0;
+        return function() {
+            console.log(++i);
+        };
+    }
+
+    var counter = makeCounter();
+    counter();
+    counter();
+
+    var counter2 = makeCounter();
+    counter2();
+    counter2();
+
+
+</script>
+
+</body>
+</html>

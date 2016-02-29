@@ -4,30 +4,17 @@
     <meta charset="UTF-8">
     <title></title>
     <script src="http://files.cnblogs.com/files/cangowu/test.js"></script>
+
 </head>
 <body>
+<div style="background-color:#0099FF;">sss</div>
+<div style="background-color:#ff0000; float:left;">sss</div>
+<div style="background-color:#0099FF;">sss</div>
+<div style="background-color:#ff0000; float:left; width:100%;">sss</div>
+<div style="background-color:#0099FF;">sss</div>
+<div style="background-color:#0099FF;">sss</div>
+<div style="background-color:#ff0000; float:left; width:100px; height:50px;">sss</div>
+ssssssssssssss<br />sssssssssssssssss<br/> ssssssssssssss
 
-
-<script>
-    function mySort() {
-        var args = new Array();
-        var temp;
-        args = arguments;
-        var len = args.length;
-        for(var i = 0;i < len;i++){
-            for(var j = 0;j < len - i;j++){
-                if(args[j]>args[j+1]){
-                    temp = args[j];
-                    args[j] = args[j+1];
-                    args[j+1] = temp;
-                }
-            }
-        }
-        return args;
-    }
-
-    var result = mySort(23,44,56,98,1,2,33);
-    console.log(result);
-</script>
 </body>
 </html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+<script>
+
+    function fixEvent(event) {
+
+        function returnTrue() {
+            return true;
+        }
+
+        function returnFalse() {
+            return false;
+        }
+
+        if (!event || !event.stopPropagation) {
+            var old = event || window.envent;
+
+            //克隆老的object，所以我们能修改值
+            event = {};
+            for (var prop in old) {
+                event[prop] = old[prop];
+            }
+
+            if (!event.target) {
+                event.target = event.srcElement || document;
+            }
+
+            event.relatedTarget = event.fromElement === event.target ? event.toElement : event.fromElement;
+
+            //阻止事件默认action
+            event.preventDefault = function () {
+                event.returnValue = false;
+                event.isDefaultPrevented = returnTrue;
+            }
+
+            event.isDefaultPrevented = returnFalse;
+
+            //阻止冒泡
+            event.stopPropagation = function () {
+                event.cancelBubble = true;
+                event.isPropagationStopped = returnTrue;
+            }
+
+            event.isPropagationStopped = returnFalse;
+
+            //阻止事件冒泡和其他操作
+            event.stopImmediatePropagation = function () {
+                this.isImmediatePropagationStopped = returnTrue;
+                this.stopImmediatePropagation();
+            }
+
+            event.isImmediatePropagationStopped = returnFalse;
+
+            //处理鼠标位置
+            if (event.clientX != null) {
+                var doc = document.documentElement, body = document.body;
+
+                event.pageX = event.clientX +
+                        (doc && doc.scrollLeft || body && body.scrollLeft || 0) -
+                        (doc && doc.clientLeft || body && body.clientLeft || 0);
+                event.pageY = event.clientY +
+                        (doc && doc.scrollTop || body && body.scrollTop || 0) -
+                        (doc && doc.clientTop || body && body.clientTop || 0);
+            }
+
+            //处理鼠标点击
+            event.which = event.charCode || event.keyCode;
+
+            //修复鼠标点击按钮
+            if (event.button != null) {
+                event.button = (event.button & 1 ? 0 :
+                        (event.button & 4 ? 1 :
+                                (event.button & 2 ? 2 : 0 )));
+            }
+        }
+        return event;
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+<script>
+    var tags = /^(abbr|br|col|img|input|link|meta|param|hr|area|embed)$/i;
+
+    function convert(html) {
+        return html.replace(/(<(\w+)[^>]*?)\//g, function(all, front, tag){
+            console.log(all);
+            console.log(front);
+            console.log(tag);
+
+           return tags.test(tag)? all : front + "></"+tag;
+        });
+    }
+
+    var a = convert("<br/>");
+    console.log(a);
+</script>
+</body>
+</html>

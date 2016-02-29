@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<div id="div1"></div>
+<div id="div2"></div>
+<div id="div3"></div>
+
+<script>
+    function Model(value) {
+        this._value = typeof value === "undefined" ? '' : value;
+        this._listeners = [];
+    };
+    Model.prototype.set = function (value) {
+        var self = this;
+        self._value = value;
+        setTimeout(function () {
+            self._listeners.forEach(function (listener) {
+                listener.call(self, value);
+            });
+        }, 1000);
+    };
+    Model.prototype.watch = function(listener){
+        console.log(this);
+        this._listeners.push(listener);
+    };
+
+    (function(){
+       var model = new Model();
+        var div1 = document.getElementById('div1');
+        var div2 = document.getElementById('div2');
+        var div3 = document.getElementById('div3');
+        model.watch(function(value){
+            div1.innerHTML  = value;
+        });
+        model.watch(function(value){
+            div2.innerHTML  = value+"123";
+        });
+        model.watch(function(value){
+            div3.innerHTML  = value+"234";
+        });
+        model.set('hello, this is a div');
+    })();
+</script>
+
+</body>
+</html>
